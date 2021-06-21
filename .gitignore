@@ -1,2 +1,5 @@
 # instructions
 *.pdf
+
+# node modules
+node_modules/

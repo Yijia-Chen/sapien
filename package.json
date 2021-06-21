@@ -1,0 +1,23 @@
+{
+  "name": "assessment",
+  "version": "1.0.0",
+  "description": "Mindmaps for better. Starting with the reading experience.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yijia-Chen/sapien.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yijia-Chen/sapien/issues"
+  },
+  "homepage": "https://github.com/Yijia-Chen/sapien#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
