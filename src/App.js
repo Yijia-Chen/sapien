@@ -28,11 +28,11 @@ function ModePanel(props) {
 function UtilityPanel(props) {
   return (
     <p className='utility-panel'>
-      <StyleButton icon='fas fa-palette' value='Topic' />
-      <StyleButton icon='fas fa-palette' value='Subtopic' />
-      <StyleButton icon='fas fa-palette' value='Relationship' />
-      <StyleButton icon='fas fa-palette' value='Boundary' />
-      <StyleButton icon='fas fa-palette' value='Insert' />
+      <StyleButton icon='fas fa-arrow-down' value='Topic' />
+      <StyleButton icon='fas fa-arrow-right' value='Subtopic' />
+      <StyleButton icon='fas fa-project-diagram' value='Relationship' />
+      <StyleButton icon='far fa-square' value='Boundary' />
+      <StyleButton icon='fas fa-plus' value='Insert' />
     </p> 
   );
 }
