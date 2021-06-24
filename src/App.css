@@ -11,6 +11,60 @@
   color: white; /* FIXME: and so is this */
 }
 
+.App-menu {
+  float: left;
+  background-color: #3F3F3F;
+  width: 250px;
+  height: calc(100vh - 60px);
+}
+
+.App-outliner {
+  float: left;
+  background-color: #2E2E2E;
+  width: 600px;
+  height: calc(100vh - 60px);
+}
+
+.outliner-title {
+  margin-top: 80px;
+  height: 60px;
+  width: 450px;
+  font-size: 50px;
+  color: #ffffff;
+  background-color: #2e2e2e;
+  border-width: 0;
+  font-family: sans-serif;
+  font-weight: 800;
+}
+
+.outliner-body {
+  margin-top: 30px;
+  height: calc(100vh - 160px - 80px - 60px);
+  width: 450px;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #2e2e2e;
+  border-width: 0;
+  font-family: sans-serif;
+  font-weight: 600;
+  line-height: 35px;
+}
+
+.separator {
+  float: left;
+  background-color: #003c5e;
+  width: 10px;
+  height: calc(100vh - 60px); 
+}
+
+.App-mindmap {
+  float: left;
+  background-color: #2E2E2E;
+  width: calc(100vw - 860px);
+  height: calc(100vh - 60px);
+}
+
+/* Header components */
 .mode-panel {
   float: left;
   margin-left: 25px;
@@ -30,7 +84,7 @@
 }
 
 /* Pure text */
-.sapien {
+.text-logo{
   float: left;
   font-family: sans-serif;
   font-weight: 800;

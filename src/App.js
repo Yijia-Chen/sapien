@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 
 function MenuButton(props) {
@@ -54,18 +55,60 @@ function StyleButton(props) {
   );
 }
 
-function App() {
-  return (
-    <div className='App'>
-      <header className='App-header'>
-        <MenuButton icon='fas fa-bars' />
-        <p className='sapien'>Sapien</p>
-        <ModePanel />
-        <UtilityPanel />
-        <StylePanel />
-      </header>
-    </div>
-  );
+class Menu extends React.Component {
+  render() {
+    return (
+      <div className='App-menu'>
+
+      </div>
+    );
+  }
 }
 
-export default App;
+class Outliner extends React.Component {
+  render() {
+    return (
+      <div className='App-outliner'>
+        <textarea className='outliner-title'></textarea>
+        <textarea 
+          className='outliner-body'
+          onChange={this.props.function}
+        ></textarea>
+      </div>
+    );
+  }
+}
+
+class Mindmap extends React.Component {
+  render() {
+    return (
+      <div className='App-mindmap'>
+        
+      </div>
+    );
+  }
+}
+
+export default class App extends React.Component {
+  update(content) {
+    this.setState({ content });
+  }
+
+  render() {
+    return (
+      <div className='App'>
+        <header className='App-header'>
+          <MenuButton icon='fas fa-bars' />
+          <p className='text-logo'>Sapien</p>
+          <ModePanel />
+          <UtilityPanel />
+          <StylePanel />
+        </header>
+        <Menu />
+        <Outliner function={(e) => this.update(e.target.value)} />
+        <div className='separator'></div>
+        <Mindmap />
+      </div>
+    );
+  }
+}
