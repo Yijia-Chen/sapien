@@ -1,6 +1,6 @@
 import { Props } from "../types";
 
-export function Mindmap(props: Props) {
+export function Mindmap(props: Props): React.ReactElement {
   return (
     <div className='App-mindmap'>
       <div

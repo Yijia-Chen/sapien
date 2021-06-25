@@ -1,6 +1,6 @@
 import { Props } from "../types";
 
-export function Outliner(props: Props) {
+export function Outliner(props: Props): React.ReactElement {
   return (
     <div className='App-outliner'>
       <textarea className='outliner-title'></textarea>

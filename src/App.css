@@ -167,13 +167,3 @@ textarea.outliner-body {
 .mindmap-content {
   text-align: left;
 }
-
-/* Below are stuff nnecessary for now */
-
-/* .container {
-  width: max-content;
-  flex-direction: row;
-  align-items:stretch;
-  justify-content: center;
-  display: inline-flex;
-} */

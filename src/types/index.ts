@@ -12,3 +12,5 @@ export type State = {
   title: string,
   content: string,
 }
+
+export type FixMeLater = any;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { MenuButton, ModePanel, UtilityPanel, StylePanel, Menu, Outliner, Mindmap } from './components';
-import { Props, State } from './types';
+import { FixMeLater, Props, State } from './types';
 let marked = require('marked');
 
 export default class App extends React.Component {
@@ -32,7 +32,7 @@ export default class App extends React.Component {
           <StylePanel />
         </header>
         <Menu />
-        <Outliner onChange={(e) => this.updateBody(e.target.textContent!)} />
+        <Outliner onChange={(e) => this.updateBody((e.target as FixMeLater).value)} />
         <div id='separator'></div>
         <Mindmap dangerouslySetInnerHTML={marked((this.state as State).content)} />
       </div>
