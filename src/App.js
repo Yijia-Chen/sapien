@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+let marked = require('marked');
 
 function MenuButton(props) {
   return (
@@ -28,13 +29,13 @@ function ModePanel(props) {
 
 function UtilityPanel(props) {
   return (
-    <p className='utility-panel'>
+    <div className='utility-panel'>
       <StyleButton icon='fas fa-arrow-down' value='Topic' />
       <StyleButton icon='fas fa-arrow-right' value='Subtopic' />
       <StyleButton icon='fas fa-project-diagram' value='Relationship' />
       <StyleButton icon='far fa-square' value='Boundary' />
       <StyleButton icon='fas fa-plus' value='Insert' />
-    </p> 
+    </div> 
   );
 }
 
@@ -83,14 +84,30 @@ class Mindmap extends React.Component {
   render() {
     return (
       <div className='App-mindmap'>
-        
+        <div
+          style={{textAlign: 'left'}}
+          dangerouslySetInnerHTML={{__html: this.props.dangerouslySetInnerHTML}}
+        ></div>
       </div>
+      
     );
   }
 }
 
 export default class App extends React.Component {
-  update(content) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: 'Mind Map Title',
+      content: ''
+    }
+  }
+
+  updateTitle(title) {
+    this.setState({ title });
+  }
+
+  updateBody(content) {
     this.setState({ content });
   }
 
@@ -99,15 +116,15 @@ export default class App extends React.Component {
       <div className='App'>
         <header className='App-header'>
           <MenuButton icon='fas fa-bars' />
-          <p className='text-logo'>Sapien</p>
+          <p id='text-logo'>Sapien</p>
           <ModePanel />
           <UtilityPanel />
           <StylePanel />
         </header>
         <Menu />
-        <Outliner function={(e) => this.update(e.target.value)} />
-        <div className='separator'></div>
-        <Mindmap />
+        <Outliner function={(e) => this.updateBody(e.target.value)} />
+        <div id='separator'></div>
+        <Mindmap dangerouslySetInnerHTML={marked(this.state.content)} />
       </div>
     );
   }
