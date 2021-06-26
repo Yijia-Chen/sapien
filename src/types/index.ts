@@ -15,8 +15,17 @@ export type State = {
 
 export type FixMeLater = any;
 
-export interface MapItem {
-  text: string,
-  layer: number,
-  children: Array<MapItem>,
+export class MapItem {
+  text: string;
+  layer: number;
+  children: Array<MapItem> = [];
+
+  constructor(text: string, layer: number) {
+    this.text = text;
+    this.layer = layer;
+  }
+
+  grow(child: MapItem): void {
+    this.children.push(child);
+  }
 }

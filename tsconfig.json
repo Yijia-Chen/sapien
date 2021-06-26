@@ -21,6 +21,7 @@
     "noEmit": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "strictNullChecks": true,
   },
   "include": [
     "src"
