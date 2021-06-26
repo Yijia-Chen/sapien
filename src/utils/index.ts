@@ -11,13 +11,11 @@ export function parseMarkdownBulletsAsJson(
   const depthItemMap: Record<number, Array<MapItem>> = {};
   let lastItem = new MapItem('Please start your map with a bullet point', 0);
   
-  console.log(lines);
   lines.map((line) => {
     const bulletIndex = line.search('-');
 
     if (bulletIndex === -1 || line.length === bulletIndex + 1 || line[bulletIndex+1] !== ' ') {
       // not an item, in which case append it to children of last item
-      if (!Object.keys(depthItemMap).length) logWarning('bullets');
       lastItem.text += ' ' + line;
 
     } else {
@@ -38,7 +36,7 @@ export function parseMarkdownBulletsAsJson(
     }
   });
 
-  return depthItemMap[0];
+  return depthItemMap[0] ?? [];
 }
 
 export function logWarning(msg: string): void {

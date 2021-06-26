@@ -158,12 +158,11 @@ textarea.outliner-body {
 .mindmap-title {
   border-radius: 10px;
   background-color: transparent;
-  color: #ffffff;
   font-size: 100px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
 }
 
-.mindmap-content {
+.mindmap-body {
   text-align: left;
 }

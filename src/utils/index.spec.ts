@@ -3,7 +3,7 @@ import { parseMarkdownBulletsAsJson } from '../utils';
 
 describe('parse', function() {
   it('test 1', function() {
-    const text = '- 1\n    - 1.1\n  - 1.2\n    - 1.2.1 \nand more\n- 2\n  - 2.1\n   -not item';
+    const text = 'ignored text\n  more ignored text\n- 1\n    - 1.1\n  - 1.2\n    - 1.2.1 \nand more\n- 2\n  - 2.1\n   -not item';
     
     const one = new MapItem('1', 0);
     const oneOne = new MapItem('1.1', 1);
