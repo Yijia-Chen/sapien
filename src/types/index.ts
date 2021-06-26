@@ -14,3 +14,9 @@ export type State = {
 }
 
 export type FixMeLater = any;
+
+export interface MapItem {
+  text: string,
+  layer: number,
+  children: Array<MapItem>,
+}

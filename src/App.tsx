@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { MenuButton, ModePanel, UtilityPanel, StylePanel, Menu, Outliner, Mindmap } from './components';
 import { FixMeLater, Props, State } from './types';
-let marked = require('marked');
+import marked from 'marked';
 
 export default class App extends React.Component {
   constructor(props: Props) {
@@ -17,7 +17,7 @@ export default class App extends React.Component {
     this.setState({ title });
   }
 
-  updateBody(content: string) {
+  updateContent(content: string) {
     this.setState({ content });
   }
 
@@ -32,7 +32,7 @@ export default class App extends React.Component {
           <StylePanel />
         </header>
         <Menu />
-        <Outliner onChange={(e) => this.updateBody((e.target as FixMeLater).value)} />
+        <Outliner onChange={(e) => this.updateContent((e.target as FixMeLater).value)} />
         <div id='separator'></div>
         <Mindmap dangerouslySetInnerHTML={marked((this.state as State).content)} />
       </div>
