@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { MenuButton, ModePanel, UtilityPanel, StylePanel, Menu, Outliner, Mindmap } from './components';
+import { Header, Menu, Outliner, Mindmap } from './components';
 import { FixMeLater, MapState, Props, State } from './types';
 import { parseMarkdownBulletsAsJson } from './utils';
 
@@ -24,16 +24,9 @@ export default class App extends React.Component<Props, State> {
   }
 
   render() {
-    console.log('re-rendered my baby!');
     return (
       <div className='App'>
-        <header className='App-header'>
-          <MenuButton icon='fas fa-bars' />
-          <p id='text-logo'>Sapien</p>
-          <ModePanel />
-          <UtilityPanel />
-          <StylePanel />
-        </header>
+        <Header />
         <Menu />
         <Outliner 
           onTitleChange={(e) => this.updateTitle((e.target as FixMeLater).value!)}

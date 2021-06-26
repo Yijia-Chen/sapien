@@ -132,6 +132,7 @@ textarea.outliner-title {
   width: calc(var(--outliner-width) - 2 * var(--outliner-horizontal-margin));
   font-size: 50px;
   font-weight: 800;
+  font-family: serif;
 }
 
 textarea.outliner-body {
@@ -142,6 +143,7 @@ textarea.outliner-body {
   font-size: 20px;
   font-weight: 600;
   line-height: 35px;
+  font-family: serif;
 }
 
 #separator {
@@ -163,14 +165,15 @@ textarea.outliner-body {
 }
 
 div.mindmap-section {
-  padding: 10px;
+  background-color: var(--primary-background-color);
+  /* padding: 10px; */
   border-style: dashed;
   border-color: var(--header-separator-color);
   border-width: 3px;
   border-radius: 15px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
 }
 
 /* Strategy: have the entire thing resized */
@@ -179,7 +182,7 @@ div.mindmap-title {
   border: solid #ffffff;
   border-width: 1 1px;
   background-color: var(--primary-background-color);
-  font-size: 50px;
+  font-size: 40px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
   line-height: 0;
@@ -190,16 +193,12 @@ div.mindmap-title {
 p.mindmap-item {
   margin: 0;
   /* float: left; */
-  font-size: 20px;
+  font-size: 25px;
 }
 
 div.mindmap-children {
-  /* float: right; */
-  display: flex;
-  flex-direction: column;
-  align-content: left;
-}
-
-.mindmap-body {
-  text-align: left;
+  border-style: dashed;
+  border-color: purple;
+  border-width: 3px;
+  border-radius: 15px;
 }
