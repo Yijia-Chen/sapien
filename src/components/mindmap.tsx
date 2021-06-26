@@ -6,7 +6,8 @@ export class Mindmap extends React.Component<Props, State> {
     const sections = item.children.map((i) => this.renderSection(i));
 
     return (
-      <div className='mindmap' style={{scale: scaleFactor(item.layer)}}>
+      <div className='mindmap-section' style={{scale: scaleFactor(item.layer)}}>
+        {/* a curve that connects the section to its parent */}
         <p className='mindmap-item'>{item.text}</p>
         <div className='mindmap-children'>
           {sections}
@@ -21,7 +22,7 @@ export class Mindmap extends React.Component<Props, State> {
 
     return (
       <div className='App-mindmap'>
-        <div className='mindmap'>
+        <div className='mindmap-section'>
           <div className='mindmap-title'>
             <p>{this.props.title!}</p>
           </div>

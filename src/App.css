@@ -162,13 +162,15 @@ textarea.outliner-body {
   align-items: center;
 }
 
-div.mindmap {
+div.mindmap-section {
   padding: 10px;
   border-style: dashed;
   border-color: var(--header-separator-color);
   border-width: 3px;
   border-radius: 15px;
-  align-content:space-around;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 /* Strategy: have the entire thing resized */
@@ -185,16 +187,15 @@ div.mindmap-title {
   padding-right: 20px;
 }
 
-div.mindmap-section {
-  flex-direction: row;
-  align-content: space-around;
-}
-
 p.mindmap-item {
+  margin: 0;
+  /* float: left; */
   font-size: 20px;
 }
 
 div.mindmap-children {
+  /* float: right; */
+  display: flex;
   flex-direction: column;
   align-content: left;
 }
