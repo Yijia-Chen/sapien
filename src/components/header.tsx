@@ -1,10 +1,9 @@
 import { Props } from "../types";
 
-
 export function MenuButton(props: Props): React.ReactElement {
   return (
     <button className='menu-button' onClick={props.onClick}>
-      <i className={props.icon} style={{fontSize:'20px', marginTop:'2.5px', color:'#ffffff'}}></i>
+      <i className={props.icon} style={{ fontSize:'20px', marginTop:'2.5px', color:'#ffffff' }}></i>
     </button>);
 }
 
@@ -49,7 +48,7 @@ export function StylePanel(_props: Props): React.ReactElement {
 function UtilityButton(props: Props): React.ReactElement {
   return (
     <button className='utility-button'>
-      <i className={props.icon} style={{fontSize:'16px', marginTop:'10px', color:'#ffffff'}}></i>
+      <i className={props.icon} style={{ fontSize:'16px', marginTop:'10px', color:'#ffffff' }}></i>
       <p className='utility-button-text'>{props.value}</p>
     </button>
   );

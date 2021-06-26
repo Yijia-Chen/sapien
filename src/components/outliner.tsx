@@ -6,7 +6,7 @@ export function Outliner(props: Props): React.ReactElement {
       <textarea 
         className='outliner-title'
         onChange={props.onTitleChange}
-      ></textarea>
+      >Central Topic</textarea>
       <textarea 
         className='outliner-body'
         onChange={props.onBodyChange}

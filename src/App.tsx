@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
 import { MenuButton, ModePanel, UtilityPanel, StylePanel, Menu, Outliner, Mindmap } from './components';
-import { FixMeLater, MapState, Props } from './types';
+import { FixMeLater, MapState, Props, State } from './types';
 import { parseMarkdownBulletsAsJson } from './utils';
-// import marked from 'marked';
 
-export default class App extends React.Component {
+export default class App extends React.Component<Props, State> {
   constructor(props: Readonly<Props>) {
     super(props);
     this.state = {
@@ -15,14 +14,12 @@ export default class App extends React.Component {
   }
 
   updateTitle(title: string) {
-    const state = (this.state as FixMeLater);
-    this.setState({ history: state.history.concat([ state.mapState ]), mapState: { ...state.mapState, title } });
+    this.setState({ history: this.state.history.concat([ this.state.mapState ]), mapState: { ...this.state.mapState, title } });
   }
 
   updateBody(body: string) {
-    const state = (this.state as FixMeLater);
-    this.setState({ history: state.history.concat([ state.mapState ]), mapState: { 
-      ...state.mapState, body, items: parseMarkdownBulletsAsJson(body) 
+    this.setState({ history: this.state.history.concat([ this.state.mapState ]), mapState: { 
+      ...this.state.mapState, body, items: parseMarkdownBulletsAsJson(body) 
     } });
   }
 
@@ -44,8 +41,8 @@ export default class App extends React.Component {
         />
         <div id='separator'></div>
         <Mindmap 
-          title={(this.state as FixMeLater).mapState.title}
-          body={JSON.stringify((this.state as FixMeLater).mapState.items)}
+          title={this.state.mapState.title}
+          items={this.state.mapState.items}
         />
       </div>
     );

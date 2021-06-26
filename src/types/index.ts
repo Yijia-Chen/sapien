@@ -8,6 +8,12 @@ export interface Props {
   value?: string,
   title?: string,
   body?: string,
+  items?: Array<MapItem>
+}
+
+export interface State {
+  mapState: MapState,
+  history: Array<MapState>
 }
 
 export class MapState {
