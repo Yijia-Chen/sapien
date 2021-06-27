@@ -18,7 +18,38 @@ describe('parse', function() {
 
     const expected = [one, two];
     const actual = parseMarkdownBulletsAsJson(text);
-    console.log(actual);
     expect(actual).toStrictEqual(expected);
   });
+
+  it('test 2', function() {
+    const text = '- Compiler/Languages\n    - Elm\n    - Svelle';
+
+    const one = new MapItem('Compiler/Languages', 0);
+    const oneOne = new MapItem('Elm', 1);
+    const oneTwo = new MapItem('Svelle', 1);
+    one.grow(oneOne);
+    one.grow(oneTwo);
+
+    const expected = [one];
+    const actual = parseMarkdownBulletsAsJson(text);
+    expect(actual).toStrictEqual(expected);
+  })
+
+  // FIXME: need to adjust for different starting points
+  // it('test 3', function() {
+  //   const text = '- a\n    - b\n      - c\n    - d'
+
+  //   const a = new MapItem('a', 0);
+  //   const b = new MapItem('b', 1);
+  //   const c = new MapItem('c', 2);
+  //   const d = new MapItem('d', 1);
+  //   a.grow(b);
+  //   b.grow(c);
+  //   a.grow(d);
+
+  //   const expected = [a];
+  //   const actual = parseMarkdownBulletsAsJson(text);
+  //   console.log(JSON.stringify(actual));
+  //   expect(actual).toStrictEqual(expected);
+  // })
 });

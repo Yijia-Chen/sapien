@@ -1,19 +1,46 @@
 import { ChangeEventHandler, MouseEventHandler } from "react"
+import { parseMarkdownBulletsAsJson } from "../utils";
 
 export interface Props {
   onClick?: MouseEventHandler,
   onTitleChange?: ChangeEventHandler,
   onBodyChange?: ChangeEventHandler,
+  onCreateNewClick?: MouseEventHandler,
   icon?: string,
   value?: string,
   title?: string,
   body?: string,
-  items?: Array<MapItem>
+  items?: Array<MapItem>,
+  documents?: Array<Document>,
+  currentDocument?: Document
 }
 
 export interface State {
-  mapState: MapState,
-  history: Array<MapState>
+  documents: Array<Document>;
+  currentDocument: Document;
+}
+
+export class Document {
+  name: string;
+  mapState = new MapState();
+  history: Array<MapState> = [];
+
+  constructor() {
+    this.name = this.mapState.title;
+  }
+
+  updateTitle(title: string) {
+    this.name = title;
+    this.mapState = { ...this.mapState, title };
+    this.history.push(this.mapState);
+    return this;
+  }
+
+  updateBody(body: string) {
+    this.mapState = { ...this.mapState, body, items: parseMarkdownBulletsAsJson(body) };
+    this.history.push(this.mapState);
+    return this;
+  }
 }
 
 export class MapState {

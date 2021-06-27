@@ -114,6 +114,36 @@ button.mode-button {
   background-color: #3F3F3F;
   width: var(--menu-width);
   height: calc(100vh - var(--header-height));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+div.menu-utility-panel {
+  margin: 12px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+}
+
+#menu-header {
+  margin: 0;
+  font-size: 13px;
+  color: #8b8b8b;
+  font-weight: 600;
+}
+
+button.menu-new {
+  margin: 0;
+  padding: 5px;
+  margin-left: 110px;
+  font-size: 16px;
+}
+
+button.menu-doc {
+  font-size: 17px;
+  font-weight: 500;
+  margin: 5px 15px 5px 15px;
 }
 
 /* Outliner components */
@@ -166,8 +196,8 @@ textarea.outliner-body {
 }
 
 div.mindmap-section {
-  /* padding: 10px; */
-  /* border-style: dashed;
+  /* padding: 10px;
+  border-style: dashed;
   border-color: var(--header-separator-color);
   border-width: 3px; */
   border-radius: 15px;
