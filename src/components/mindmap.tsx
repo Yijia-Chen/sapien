@@ -1,20 +1,39 @@
 import React from "react";
 import { MapItem, Props, State } from "../types";
+import Xarrow from "react-xarrows";
+import { uuid } from "../utils";
 
-const ITEM_SCALE_FACTOR = 0.93;
+const ITEM_SCALE_FACTOR = 0.95;
+const MINDMAP_SCALE_FACTOR = 0.7;
 
-export class Mindmap extends React.Component<Props, State> {  
-  renderSection(item: MapItem, branchIndex: number): JSX.Element {
-    const sections = item.children.map((i) => this.renderSection(i, branchIndex));
+export class Mindmap extends React.Component<Props, State> {
+  /**
+   * Renders a section of the mindmap containing an item and its children (highest being the mindmap itself)
+   * @param item contains the information for text, layer, and children
+   * @param branchIndex specifies which primary branch the current item is on, for coloring purposes
+   * @param parentId for curve connector
+   * @returns JSX Element representing the section
+   */
+  renderSection(item: MapItem, branchIndex: number, parentId: string): JSX.Element {
+    const id = uuid(); // generate unique id for drawing curve connectors
+    const sections = item.children.map((i) => this.renderSection(i, branchIndex, id));
     const curveColor = assignBranchColor(branchIndex);
 
     return (
-      <div className='mindmap-section' style={{transform: `scale(${scaleFactor(item.layer)})` }}>
-        {/* a curve that connects the section to its parent */}
-        <svg width='100' height='50' style={{ marginLeft: '-24px', marginRight: '5px' }}>
-          <path d='M0 50 A 1600 120 0 0 1 100 25' stroke={curveColor} stroke-width='5' fill='#2e2e2e' />
-        </svg>
-        <p className='mindmap-item'>{item.text}</p>
+      <div className='mindmap-section' style={{ transform: `scale(${scaleFactor(item.layer)})` }}>
+        <div className='mindmap-curve-connector'>
+          <Xarrow
+            start={parentId}
+            end={id}
+            color={curveColor}
+            showHead={false}
+            curveness={0.4}
+            strokeWidth={6}
+          ></Xarrow>
+        </div>
+        <div id={id} className='mindmap-item'>
+          <p className='mindmap-item-text' style={{ borderBottomColor: curveColor }}>{item.text}</p>
+        </div>
         <div className='mindmap-children'>
           {sections}
         </div>
@@ -24,13 +43,16 @@ export class Mindmap extends React.Component<Props, State> {
 
   render() {
     const items = this.props.items!;
-    const sections = items.map((item, k) => this.renderSection(item, k))
+    const titleId = uuid();
+    const sections = items.map((item, k) => this.renderSection(item, k, titleId));
 
     return (
       <div className='App-mindmap'>
-        <div className='mindmap-section'>
-          <div className='mindmap-title'>
-            <p>{this.props.title!}</p>
+        <div className='mindmap-section' style={{ transform: `scale${MINDMAP_SCALE_FACTOR}` }}>
+          <div id={titleId} style={{ zIndex: 1 }}>
+            <div className='mindmap-title'>
+              <p>{this.props.title!}</p>
+            </div>
           </div>
           <div className='mindmap-children'>
             {sections}

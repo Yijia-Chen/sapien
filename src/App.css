@@ -7,7 +7,7 @@
   --primary-background-color: #2e2e2e;
   --header-height: 60px;
   --outliner-vertical-margin: 80px;
-  --outliner-width: 600px;
+  --outliner-width: 400px;
   --outliner-horizontal-margin: 75px;
   --menu-width: 250px;
   --separator-width: 10px;
@@ -160,23 +160,22 @@ textarea.outliner-body {
   width: var(--mindmap-width);
   height: calc(100vh - var(--header-height));
   text-align: center;
+  font-weight: 800;
   display: flex;
   align-items: center;
 }
 
 div.mindmap-section {
-  background-color: var(--primary-background-color);
   /* padding: 10px; */
-  border-style: dashed;
+  /* border-style: dashed;
   border-color: var(--header-separator-color);
-  border-width: 3px;
+  border-width: 3px; */
   border-radius: 15px;
   display: flex;
   flex-direction: row;
   justify-content: left;
 }
 
-/* Strategy: have the entire thing resized */
 div.mindmap-title {
   border-radius: 10px;
   border: solid #ffffff;
@@ -184,21 +183,36 @@ div.mindmap-title {
   background-color: var(--primary-background-color);
   font-size: 40px;
   font-family: Arial, Helvetica, sans-serif;
-  text-align: left;
   line-height: 0;
   padding-left: 20px;
   padding-right: 20px;
+  margin-right: -80px;
 }
 
-p.mindmap-item {
+div.mindmap-item {
+  padding-bottom: 29.5px;
+}
+
+p.mindmap-item-text {
   margin: 0;
-  /* float: left; */
+  /* position: fixed; */
   font-size: 25px;
+  border-style: none none solid none;
+  border-width: 6px;
+  border-color: #ffffff;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: -15px; /* FIXME: for connection purposes */
+  /* transform: translate(0px, -26px); */
+}
+
+div.mindmap-curve-connector {
+  width: 100px;
 }
 
 div.mindmap-children {
-  border-style: dashed;
+  /* border-style: dashed;
   border-color: purple;
-  border-width: 3px;
+  border-width: 3px; */
   border-radius: 15px;
 }
