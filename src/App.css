@@ -44,6 +44,7 @@ div.mode-panel {
   float: left;
   margin-left: 25px;
   margin-top: 22px;
+  align-content: center;
 }
 
 div.utility-panel {
@@ -70,10 +71,9 @@ button.menu-button-selected {
   height: 30px;
   width: 30px;
   float: left;
-  display: inline-flex;
   margin-left: var(--utility-button-horizontal-margin);
   margin-top: 15px;
-  background-color: #025f93;
+  background-color: #025f93; /* 025f93 */
   border-radius: 5px; 
 }
 
@@ -81,7 +81,6 @@ button.menu-button {
   height: 30px;
   width: 30px;
   float: left;
-  display: inline-flex;
   margin-left: var(--utility-button-horizontal-margin);
   margin-top: 15px;
   border-radius: 5px; 
@@ -115,6 +114,17 @@ button.mode-button {
   padding-left: 15px;
   padding-right: 15px;
   color: var(--dark-text-color);
+}
+
+button.mode-buton-selected {
+  float: left;
+  font-size: 12px;
+  font-weight: 800;
+  margin-left: 8px;
+  border-radius: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background-color: #025f93; /*006ca9*/
 }
 
 /* Menu components */

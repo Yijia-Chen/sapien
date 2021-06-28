@@ -15,25 +15,25 @@ export default class App extends React.Component<any, State> {
     };
   }
 
-  switchMenuStatus() {
+  switchMenuStatus(): void {
     this.setState({ ...this.state, isMenuHidden: !this.state.isMenuHidden });
   }
 
-  switchMode(mode: Mode) {
+  switchMode(mode: Mode): void {
     this.setState({ ...this.state, mode })
   }
 
-  createNewDocument() {
+  createNewDocument(): void {
     const document = new Document(this.state.documents);
     this.setState({ ...this.state, documents: this.state.documents.concat(document) });
   }
 
-  switchDocument(id: string) {
+  switchDocument(id: string): void {
     const idDocumentMap = new Map(this.state.documents.map((doc) => [doc.id, doc]));
     this.setState({ ...this.state, currentDocument: idDocumentMap.get(id)! })
   }
 
-  archiveDocument(id: string) {
+  archiveDocument(id: string): void {
     const visibleDocuments = this.state.documents.filter((doc) => !doc.isArchived);
     const idVisibleDocumentMap = new Map(visibleDocuments.map((doc) => [doc.id, doc]));
 
@@ -44,21 +44,26 @@ export default class App extends React.Component<any, State> {
     }
   }
 
-  updateTitle(title: string) {
+  updateTitle(title: string): void {
     this.setState({ ...this.state, currentDocument: this.state.currentDocument.updateTitle(title) });
   }
 
-  updateBody(body: string) {
+  updateBody(body: string): void {
     this.setState({ ...this.state, currentDocument: this.state.currentDocument.updateBody(body) });
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       <div className='App'>
         <Header
           isMenuHidden={this.state.isMenuHidden}
+          mode={this.state.mode}
           onMenuSwitch={() => this.switchMenuStatus()}
-          onModeSwitch={(e) => this.switchMode((e.target as FixMeLater).value!)}
+          onModeSwitch={(e) => {
+            console.log(e.target);
+            console.log((e.target as FixMeLater).id);
+            this.switchMode((e.target as FixMeLater).id!);
+          }}
           onTopicClick={UNIMPLEMENTED_CALLBACK}
           onSubtopicClick={UNIMPLEMENTED_CALLBACK}
           onRelationshipClick={UNIMPLEMENTED_CALLBACK}
@@ -75,16 +80,22 @@ export default class App extends React.Component<any, State> {
           currentDocument={this.state.currentDocument}
         />
         <Outliner 
+          mode={this.state.mode}
           onTitleChange={(e) => this.updateTitle((e.target as FixMeLater).value!)}
           onBodyChange={(e) => this.updateBody((e.target as FixMeLater).value!)}
           mapState={this.state.currentDocument.mapState}
         />
-        <div id='separator'></div>
+        <Separator mode={this.state.mode} />
         <Mindmap 
+          mode={this.state.mode}
           title={this.state.currentDocument.mapState.title}
           items={this.state.currentDocument.mapState.items}
         />
       </div>
     );
   }
+}
+
+function Separator(props: { mode: Mode }): JSX.Element | null {
+  return props.mode === Mode.BOTH ? (<div id='separator'></div>) : null;
 }

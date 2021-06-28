@@ -1,5 +1,5 @@
 import React from "react";
-import { MapItem, MapProps } from "../types";
+import { MapItem, MapProps, Mode } from "../types";
 import Xarrow from "react-xarrows";
 import { uuid } from "../utils";
 
@@ -41,25 +41,29 @@ export class Mindmap extends React.Component<MapProps, any> {
     );
   }
 
-  render() {
-    const items = this.props.items!;
-    const titleId = uuid();
-    const sections = items.map((item, k) => this.renderSection(item, k, titleId));
+  render(): JSX.Element | null {
+    if (this.props.mode === Mode.MINDMAP || this.props.mode === Mode.BOTH) {
+      const items = this.props.items!;
+      const titleId = uuid();
+      const sections = items.map((item, k) => this.renderSection(item, k, titleId));
 
-    return (
-      <div className='App-mindmap'>
-        <div className='mindmap-section' style={{ transform: `scale${MINDMAP_SCALE_FACTOR}` }}>
-          <div id={titleId} style={{ zIndex: 1 }}>
-            <div className='mindmap-title'>
-              <p>{this.props.title!}</p>
+      return (
+        <div className='App-mindmap'>
+          <div className='mindmap-section' style={{ transform: `scale${MINDMAP_SCALE_FACTOR}` }}>
+            <div id={titleId} style={{ zIndex: 1 }}>
+              <div className='mindmap-title'>
+                <p>{this.props.title!}</p>
+              </div>
+            </div>
+            <div className='mindmap-children'>
+              {sections}
             </div>
           </div>
-          <div className='mindmap-children'>
-            {sections}
-          </div>
         </div>
-      </div>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }
 

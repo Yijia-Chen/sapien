@@ -18,7 +18,7 @@ export class Menu extends React.Component<MenuProps, any> {
     ]));
   }
 
-  render() {
+  render(): JSX.Element | null {
     if (!this.props.isMenuHidden) {
       return (
         <div className='App-menu'>

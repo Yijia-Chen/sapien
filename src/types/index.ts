@@ -13,6 +13,7 @@ export interface HeaderProps {
   OnInsertClick: MouseEventHandler;
   onStyleSwitch: MouseEventHandler;
   isMenuHidden: boolean;
+  mode: Mode;
 }
 
 export interface ButtonProps {
@@ -30,12 +31,15 @@ export interface MenuProps {
   onArchiveClick: MouseEventHandler;
 }
 export interface OutlinerProps {
+  mode: Mode;
   onTitleChange: ChangeEventHandler;
   onBodyChange: ChangeEventHandler;
   mapState: MapState;
+ 
 }
 
 export interface MapProps {
+  mode: Mode;
   title: string;
   items: Array<MapItem>;
 }

@@ -7,9 +7,9 @@ export function Header(props: HeaderProps): JSX.Element {
       <MenuButton icon='fas fa-bars' onClick={props.onMenuSwitch} isMenuHidden={props.isMenuHidden} />
       <p id='text-logo'>Sapien</p>
       <div className='mode-panel'>
-        <ModeButton value={Mode.MINDMAP} onClick={props.onModeSwitch} />
-        <ModeButton value={Mode.OUTLINER} onClick={props.onModeSwitch} />
-        <ModeButton value={Mode.BOTH} onClick={props.onModeSwitch} />
+        <ModeButton value={Mode.MINDMAP} onClick={props.onModeSwitch} mode={props.mode} />
+        <ModeButton value={Mode.OUTLINER} onClick={props.onModeSwitch} mode={props.mode} />
+        <ModeButton value={Mode.BOTH} onClick={props.onModeSwitch} mode={props.mode} />
       </div>
       <div className='utility-panel'>
         <UtilityButton icon='fas fa-arrow-down' value='Topic' onClick={props.onTopicClick} />
@@ -34,9 +34,11 @@ function MenuButton(props: SetRequired<ButtonProps, 'icon'> & { isMenuHidden: bo
     </button>);
 }
 
-function ModeButton(props: SetRequired<ButtonProps, 'value'>): JSX.Element {
+function ModeButton(props: SetRequired<ButtonProps, 'value'> & { mode: Mode }): JSX.Element {
+  const style = props.mode === props.value ? 'mode-button-selected' : 'mode-button';
+
   return (
-    <button className='mode-button' onClick={props.onClick}>
+    <button id={props.value} className={style} onClick={props.onClick}>
       {props.value}
     </button>
   )
