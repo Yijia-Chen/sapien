@@ -1,15 +1,10 @@
 import React from "react";
-import { MapItem } from "../types";
+import { MapItem, MapProps } from "../types";
 import Xarrow from "react-xarrows";
 import { uuid } from "../utils";
 
 const ITEM_SCALE_FACTOR = 0.95;
 const MINDMAP_SCALE_FACTOR = 0.7;
-
-interface MapProps {
-  title: string;
-  items: Array<MapItem>;
-}
 
 export class Mindmap extends React.Component<MapProps, any> {
   /**
@@ -25,7 +20,7 @@ export class Mindmap extends React.Component<MapProps, any> {
     const curveColor = assignBranchColor(branchIndex);
 
     return (
-      <div className='mindmap-section' style={{ transform: `scale(${scaleFactor(item.layer)})` }}>
+      <div key={id} className='mindmap-section' style={{ transform: `scale(${scaleFactor(item.layer)})` }}>
         <div className='mindmap-curve-connector'>
           <Xarrow
             start={parentId}

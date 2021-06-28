@@ -121,7 +121,7 @@ button.mode-button {
 }
 
 div.menu-utility-panel {
-  margin: 12px 20px 0px 20px;
+  margin: 12px 15px 0px 15px;
   display: flex;
   flex-direction: row;
 }
@@ -140,10 +140,25 @@ button.menu-new {
   font-size: 16px;
 }
 
-button.menu-doc {
+button.menu-document {
   font-size: 17px;
   font-weight: 500;
-  margin: 5px 15px 5px 15px;
+  color: #d3d3d3;
+  width: calc(var(--menu-width) - 20px);
+  padding: 5px 10px 5px 10px;
+  margin: 2px 10px 2px 10px;
+  text-align: left;
+}
+
+button.menu-document-current {
+  font-size: 17px;
+  font-weight: 700;
+  background-color: #616161;
+  border-radius: 7px;
+  width: calc(var(--menu-width) - 20px);
+  padding: 5px 10px 5px 10px;
+  margin: 2px 10px 2px 10px; 
+  text-align: left;
 }
 
 /* Outliner components */

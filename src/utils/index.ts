@@ -2,7 +2,8 @@ import { Document, MapItem } from "../types";
 
 /**
  * Converts a block of text in markdown bullet point format to JSON format.
- * Returns the top layer items as all items are descendant of them.
+ * @param text 
+ * @returns the top layer items, as collective ancestors of all items
  */
 export function parseMarkdownBulletsAsJson(
   text: string,
@@ -24,7 +25,6 @@ export function parseMarkdownBulletsAsJson(
       let layer = Math.floor(bulletIndex / 2);
 
       if (layer > lastItem.layer) {
-        console.log(line);
         // current item descends from last item iff bullet index of current item is at least two greater than that of last item
         layer = bulletIndex < depthBulletMap[lastItem.layer] + 2 ? lastItem.layer : lastItem.layer + 1;
       }
@@ -48,6 +48,11 @@ export function parseMarkdownBulletsAsJson(
   return depthItemMap[0] ?? [];
 }
 
+/**
+ * Calculates the largest order in current documents.
+ * @param documents 
+ * @returns the largest order
+ */
 export function getLargestOrder(documents: Array<Document>): number {
   return documents.map((doc) => doc.order).reduce((a, b) => a > b ? a : b);
 }

@@ -14,10 +14,17 @@ export interface MenuProps {
   currentDocument: Document;
   onCreateNewClick: MouseEventHandler;
   onDocumentClick: MouseEventHandler;
+  onArchiveClick: MouseEventHandler;
 }
 export interface OutlinerProps {
   onTitleChange: ChangeEventHandler;
   onBodyChange: ChangeEventHandler;
+  mapState: MapState;
+}
+
+export interface MapProps {
+  title: string;
+  items: Array<MapItem>;
 }
 
 export interface State {
@@ -70,8 +77,8 @@ export class MapState {
 
   constructor(title?: string, body?: string, items?: Array<MapItem>) {
     this.title = title ?? 'Central Topic';
-    this.body = body ?? '';
-    this.items = items ?? [];
+    this.body = body ?? '- first point';
+    this.items = items ?? parseMarkdownBulletsAsJson(this.body);
   }
 }
 

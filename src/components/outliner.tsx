@@ -6,10 +6,12 @@ export function Outliner(props: OutlinerProps): JSX.Element {
       <textarea 
         className='outliner-title'
         onChange={props.onTitleChange}
-      >Central Topic</textarea>
+        value={props.mapState.title}
+      ></textarea>
       <textarea 
         className='outliner-body'
         onChange={props.onBodyChange}
+        value={props.mapState.body}
       ></textarea>
     </div>
   );

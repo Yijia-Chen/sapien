@@ -2,9 +2,20 @@ import React from "react";
 import { Document, MenuProps } from "../types";
 
 export class Menu extends React.Component<MenuProps, any> {
-  renderSection(documents: Array<Document>): Array<JSX.Element> {
-    return documents.map((d) => 
-      <button className='menu-doc' onClick={this.props.onDocumentClick}>{d.name}</button>);
+  renderSection(): Array<JSX.Element> {
+    let currentId = this.props.currentDocument.id; 
+    const getStyle = (doc: Document) => currentId === doc.id ? 'menu-document-current' : 'menu-document';
+
+    const visibleDocuments = this.props.documents.filter((doc) => !doc.isArchived);
+    const idVisibleDocumentMap = new Map(visibleDocuments.map((viDoc) => [viDoc.id, viDoc]));
+    if (!idVisibleDocumentMap.get(currentId)) currentId = visibleDocuments[0].id;
+
+    return visibleDocuments.flatMap((doc) => ([
+      <button key={doc.id} id={doc.id} className={getStyle(doc)} onClick={this.props.onDocumentClick}>
+        {doc.name}
+      </button>,
+      <button key={doc.id + '-del'} id={doc.id} className={'amazing'} onClick={this.props.onArchiveClick}>X</button>
+    ]));
   }
 
   render() {
@@ -16,7 +27,7 @@ export class Menu extends React.Component<MenuProps, any> {
             <i className='far fa-plus-square' style={{ color: '#8b8b8b' }}></i>
           </button>
         </div>
-        {this.renderSection(this.props.documents!)}
+        {this.renderSection()}
       </div>
     );
   }

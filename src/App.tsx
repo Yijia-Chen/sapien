@@ -31,19 +31,32 @@ export default class App extends React.Component<any, State> {
     this.setState({ ...this.state, currentDocument: idDocumentMap.get(id)! })
   }
 
+  archiveDocument(id: string) {
+    const visibleDocuments = this.state.documents.filter((doc) => !doc.isArchived);
+    const idVisibleDocumentMap = new Map(visibleDocuments.map((doc) => [doc.id, doc]));
+
+    // only allow archive if there are more than one documents left
+    if (visibleDocuments.length > 1) {
+      idVisibleDocumentMap.get(id)!.archive();
+      this.setState({ ...this.state })
+    }
+  }
+
   render() {
     return (
       <div className='App'>
         <Header />
         <Menu
           onCreateNewClick={() => this.createNewDocument()}
-          onDocumentClick={(e) => this.switchDocument((e.target as FixMeLater).value!)}
+          onDocumentClick={(e) => this.switchDocument((e.target as FixMeLater).id!)}
+          onArchiveClick={(e) => this.archiveDocument((e.target as FixMeLater).id!)}
           documents={this.state.documents}
           currentDocument={this.state.currentDocument}
         />
         <Outliner 
           onTitleChange={(e) => this.updateTitle((e.target as FixMeLater).value!)}
           onBodyChange={(e) => this.updateBody((e.target as FixMeLater).value!)}
+          mapState={this.state.currentDocument.mapState}
         />
         <div id='separator'></div>
         <Mindmap 
