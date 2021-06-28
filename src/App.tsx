@@ -71,26 +71,28 @@ export default class App extends React.Component<any, State> {
           OnInsertClick={UNIMPLEMENTED_CALLBACK}
           onStyleSwitch={UNIMPLEMENTED_CALLBACK}
         />
-        <Menu
-          isMenuHidden={this.state.isMenuHidden}
-          onCreateNewClick={() => this.createNewDocument()}
-          onDocumentClick={(e) => this.switchDocument((e.target as FixMeLater).id!)}
-          onArchiveClick={(e) => this.archiveDocument((e.target as FixMeLater).id!)}
-          documents={this.state.documents}
-          currentDocument={this.state.currentDocument}
-        />
-        <Outliner 
-          mode={this.state.mode}
-          onTitleChange={(e) => this.updateTitle((e.target as FixMeLater).value!)}
-          onBodyChange={(e) => this.updateBody((e.target as FixMeLater).value!)}
-          mapState={this.state.currentDocument.mapState}
-        />
-        <Separator mode={this.state.mode} />
-        <Mindmap 
-          mode={this.state.mode}
-          title={this.state.currentDocument.mapState.title}
-          items={this.state.currentDocument.mapState.items}
-        />
+        <div className='App-body'>
+          <Menu
+            isMenuHidden={this.state.isMenuHidden}
+            onCreateNewClick={() => this.createNewDocument()}
+            onDocumentClick={(e) => this.switchDocument((e.target as FixMeLater).id!)}
+            onArchiveClick={(e) => this.archiveDocument((e.target as FixMeLater).id!)}
+            documents={this.state.documents}
+            currentDocument={this.state.currentDocument}
+          />
+          <Outliner 
+            mode={this.state.mode}
+            onTitleChange={(e) => this.updateTitle((e.target as FixMeLater).value!)}
+            onBodyChange={(e) => this.updateBody((e.target as FixMeLater).value!)}
+            mapState={this.state.currentDocument.mapState}
+          />
+          <Separator mode={this.state.mode} />
+          <Mindmap 
+            mode={this.state.mode}
+            title={this.state.currentDocument.mapState.title}
+            items={this.state.currentDocument.mapState.items}
+          />
+        </div>
       </div>
     );
   }

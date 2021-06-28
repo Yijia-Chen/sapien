@@ -7,11 +7,13 @@
   --primary-background-color: #2e2e2e;
   --header-height: 60px;
   --outliner-vertical-margin: 80px;
-  --outliner-width: 400px;
+  /* --outliner-width: calc(max(40vw, 100%)); */
+  --outliner-width-part: 30vw;
+  --outliner-width-full: 100%;
   --outliner-horizontal-margin: 75px;
   --menu-width: 250px;
   --separator-width: 10px;
-  --mindmap-width: calc(100vw - var(--menu-width) - var(--outliner-width) - var(--separator-width));
+  /* --mindmap-width: calc(100vw - var(--menu-width) - var(--outliner-width) - var(--separator-width)); */
 }
 
 /* Default components */
@@ -127,6 +129,14 @@ button.mode-buton-selected {
   background-color: #025f93; /*006ca9*/
 }
 
+/* Body */
+div.App-body {
+  display: flex;
+  justify-content: stretch;
+  width: 100vw;
+  background-color: lemonchiffon;
+}
+
 /* Menu components */
 .App-menu {
   float: left;
@@ -182,28 +192,66 @@ button.menu-document-current {
 
 /* Outliner components */
 .App-outliner {
+  width: var(--outliner-width-part);
+
   float: left;
   background-color: var(--primary-background-color);
-  width: var(--outliner-width);
+  padding-left: var(--outliner-horizontal-margin);
+  padding-right: var(--outliner-horizontal-margin);
   height: calc(100vh - var(--header-height));
   flex-direction: column;
   align-content: center;
 }
 
+.App-outliner-full {
+  width: var(--outliner-width-full);
+
+  float: left;
+  background-color: var(--primary-background-color);
+  padding-left: var(--outliner-horizontal-margin);
+  padding-right: var(--outliner-horizontal-margin);
+  height: calc(100vh - var(--header-height));
+  flex-direction: column;
+}
+
 textarea.outliner-title {
+  width: calc(var(--outliner-width-part) - 2 * var(--outliner-horizontal-margin));
+
   margin-top: var(--outliner-vertical-margin);
   height: 60px; /* FIXME */
-  width: calc(var(--outliner-width) - 2 * var(--outliner-horizontal-margin));
   font-size: 50px;
   font-weight: 800;
   font-family: serif;
 }
 
+textarea.outliner-title-full {
+  width: calc(var(--outliner-width-full) - 2 * var(--outliner-horizontal-margin));
+
+  margin-top: var(--outliner-vertical-margin);
+  height: 60px; /* FIXME */
+  font-size: 50px;
+  font-weight: 800;
+  font-family: serif; 
+}
+
 textarea.outliner-body {
+  width: calc(var(--outliner-width-part) - 2 * var(--outliner-horizontal-margin));
+
   margin-top: 30px;
   margin-bottom: var(--outliner-vertical-margin);
   height: calc(100vh - 160px - 90px - var(--header-height)); /* FIXME */
-  width: calc(var(--outliner-width) - 2 * var(--outliner-horizontal-margin));
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 35px;
+  font-family: serif;
+}
+
+textarea.outliner-body-full {
+  width: calc(var(--outliner-width-full) - 2 * var(--outliner-horizontal-margin));
+
+  margin-top: 30px;
+  margin-bottom: var(--outliner-vertical-margin);
+  height: calc(100vh - 160px - 90px - var(--header-height)); /* FIXME */
   font-size: 20px;
   font-weight: 600;
   line-height: 35px;
@@ -219,9 +267,9 @@ textarea.outliner-body {
 
 /* Mindmap components */
 .App-mindmap {
-  float: left;
+  /* float: left; */
   background-color: var(--primary-background-color);
-  width: var(--mindmap-width);
+  width: 100%;
   height: calc(100vh - var(--header-height));
   text-align: center;
   font-weight: 800;
