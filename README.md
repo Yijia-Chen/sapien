@@ -1,70 +1,23 @@
-# Getting Started with Create React App
+# Sapien
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mindmaps for seamless brainstorming and collaboration. Starting with the reading experience.
 
-## Available Scripts
+## Goal
 
-In the project directory, you can run:
+I love reading. However, I find it very difficult to both read in depth and share insights conveniently with friends. Kindle and physical books are structured to allow the reader to enter the flow, whereas WeChat Books and blogs are designed to making sharing seamless, but neither are natively suited for both purposes.
 
-### `yarn start`
+As a result, I have been thinking to create a series of non-disruptive tool integrations to Kindle, in order to significantly reduce the activation energy for sharing and synthesis activities during or after in-depth reading. This vision has given birth to [Allumer](https://github.com/Yijia-Chen/allumer), an also-in-progress app for exporting and formatting Kindle highlights and notes, and this one.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Progress
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+2 / 10.
 
-### `yarn test`
+Right now, there is an Xmind-like mind map creation tool with Notion-like document tree, whose combination is already superior to both tools for my mind map purposes. UI is far from great yet and needs to allow more style customization.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+One major feature that I have yet to implement is sharing and real-time collaboration.
 
-### `yarn build`
+## How to Use
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), hence all commands that come with a React App are ready at your disposal.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To start the project in development mode, first configure your env file based on `.env.template`, and then simply run `yarn start` in the project directory. Now open [http://localhost:3000](http://localhost:3000) to view the app in the browser. The page automatically reloads for every edit you make locally.
