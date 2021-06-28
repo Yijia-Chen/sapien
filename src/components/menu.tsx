@@ -19,16 +19,20 @@ export class Menu extends React.Component<MenuProps, any> {
   }
 
   render() {
-    return (
-      <div className='App-menu'>
-        <div className='menu-utility-panel'>
-          <p id='menu-header'>WORKSPACE</p>
-          <button className='menu-new' onClick={this.props.onCreateNewClick}>
-            <i className='far fa-plus-square' style={{ color: '#8b8b8b' }}></i>
-          </button>
+    if (!this.props.isMenuHidden) {
+      return (
+        <div className='App-menu'>
+          <div className='menu-utility-panel'>
+            <p id='menu-header'>WORKSPACE</p>
+            <button className='menu-new' onClick={this.props.onCreateNewClick}>
+              <i className='far fa-plus-square' style={{ color: '#8b8b8b' }}></i>
+            </button>
+          </div>
+          {this.renderSection()}
         </div>
-        {this.renderSection()}
-      </div>
-    );
+      );
+    } else {
+      return null;
+    }
   }
 }

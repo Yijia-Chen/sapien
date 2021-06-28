@@ -1,24 +1,26 @@
 import React from 'react';
 import './App.css';
 import { Header, Menu, Outliner, Mindmap } from './components';
-import { Document, FixMeLater, State } from './types';
+import { Document, FixMeLater, Mode, State, UNIMPLEMENTED_CALLBACK } from './types';
 
 export default class App extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
     const document = new Document();
     this.state = {
+      isMenuHidden: false,
+      mode: Mode.BOTH,
       currentDocument: document,
       documents: [document]
     };
   }
 
-  updateTitle(title: string) {
-    this.setState({ ...this.state, currentDocument: this.state.currentDocument.updateTitle(title) });
+  switchMenuStatus() {
+    this.setState({ ...this.state, isMenuHidden: !this.state.isMenuHidden });
   }
 
-  updateBody(body: string) {
-    this.setState({ ...this.state, currentDocument: this.state.currentDocument.updateBody(body) });
+  switchMode(mode: Mode) {
+    this.setState({ ...this.state, mode })
   }
 
   createNewDocument() {
@@ -42,11 +44,30 @@ export default class App extends React.Component<any, State> {
     }
   }
 
+  updateTitle(title: string) {
+    this.setState({ ...this.state, currentDocument: this.state.currentDocument.updateTitle(title) });
+  }
+
+  updateBody(body: string) {
+    this.setState({ ...this.state, currentDocument: this.state.currentDocument.updateBody(body) });
+  }
+
   render() {
     return (
       <div className='App'>
-        <Header />
+        <Header
+          isMenuHidden={this.state.isMenuHidden}
+          onMenuSwitch={() => this.switchMenuStatus()}
+          onModeSwitch={(e) => this.switchMode((e.target as FixMeLater).value!)}
+          onTopicClick={UNIMPLEMENTED_CALLBACK}
+          onSubtopicClick={UNIMPLEMENTED_CALLBACK}
+          onRelationshipClick={UNIMPLEMENTED_CALLBACK}
+          onBoundaryClick={UNIMPLEMENTED_CALLBACK}
+          OnInsertClick={UNIMPLEMENTED_CALLBACK}
+          onStyleSwitch={UNIMPLEMENTED_CALLBACK}
+        />
         <Menu
+          isMenuHidden={this.state.isMenuHidden}
           onCreateNewClick={() => this.createNewDocument()}
           onDocumentClick={(e) => this.switchDocument((e.target as FixMeLater).id!)}
           onArchiveClick={(e) => this.archiveDocument((e.target as FixMeLater).id!)}

@@ -3,6 +3,18 @@ import { getLargestOrder, parseMarkdownBulletsAsJson, uuid } from "../utils";
 
 export const ORDER_STEP = 65536;
 
+export interface HeaderProps {
+  onMenuSwitch: MouseEventHandler;
+  onModeSwitch: MouseEventHandler;
+  onTopicClick: MouseEventHandler;
+  onSubtopicClick: MouseEventHandler;
+  onRelationshipClick: MouseEventHandler;
+  onBoundaryClick: MouseEventHandler;
+  OnInsertClick: MouseEventHandler;
+  onStyleSwitch: MouseEventHandler;
+  isMenuHidden: boolean;
+}
+
 export interface ButtonProps {
   onClick: MouseEventHandler;
   icon?: string;
@@ -10,6 +22,7 @@ export interface ButtonProps {
 }
 
 export interface MenuProps {
+  isMenuHidden: boolean;
   documents: Array<Document>;
   currentDocument: Document;
   onCreateNewClick: MouseEventHandler;
@@ -28,8 +41,16 @@ export interface MapProps {
 }
 
 export interface State {
+  isMenuHidden: boolean;
+  mode: Mode;
   documents: Array<Document>;
   currentDocument: Document;
+}
+
+export enum Mode {
+  MINDMAP = 'Mind Map',
+  OUTLINER = 'Outliner',
+  BOTH = 'Both'
 }
 
 export class Document {
