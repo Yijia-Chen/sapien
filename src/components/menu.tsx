@@ -1,9 +1,10 @@
 import React from "react";
-import { Props, State, Document } from "../types";
+import { Document, MenuProps } from "../types";
 
-export class Menu extends React.Component<Props, State> {
-  renderSection(documents: Array<Document>) {
-    return documents.map((d) => <button className='menu-doc'>{d.name}</button>);
+export class Menu extends React.Component<MenuProps, any> {
+  renderSection(documents: Array<Document>): Array<JSX.Element> {
+    return documents.map((d) => 
+      <button className='menu-doc' onClick={this.props.onDocumentClick}>{d.name}</button>);
   }
 
   render() {

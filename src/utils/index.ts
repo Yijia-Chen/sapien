@@ -1,4 +1,4 @@
-import { MapItem } from "../types";
+import { Document, MapItem } from "../types";
 
 /**
  * Converts a block of text in markdown bullet point format to JSON format.
@@ -22,10 +22,6 @@ export function parseMarkdownBulletsAsJson(
 
     } else {
       let layer = Math.floor(bulletIndex / 2);
-
-      // layer = Object.entries(depthBulletMap)
-      //   .filter(([_, idx]) => idx < bulletIndex)
-      //   .reduce(([k1, idx1], [k2, idx2]) => idx1 > idx2 ? [k1, idx1] : [k2, idx2])[1];
 
       if (layer > lastItem.layer) {
         console.log(line);
@@ -52,8 +48,8 @@ export function parseMarkdownBulletsAsJson(
   return depthItemMap[0] ?? [];
 }
 
-export function logWarning(msg: string): void {
-  console.log(`You are not doing ${msg} right. Please correct.`);
+export function getLargestOrder(documents: Array<Document>): number {
+  return documents.map((doc) => doc.order).reduce((a, b) => a > b ? a : b);
 }
 
 export function uuid(): string {
@@ -61,4 +57,8 @@ export function uuid(): string {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
+}
+
+export function logWarning(msg: string): void {
+  console.log(`You are not doing ${msg} right. Please correct.`);
 }

@@ -1,12 +1,17 @@
 import React from "react";
-import { MapItem, Props, State } from "../types";
+import { MapItem } from "../types";
 import Xarrow from "react-xarrows";
 import { uuid } from "../utils";
 
 const ITEM_SCALE_FACTOR = 0.95;
 const MINDMAP_SCALE_FACTOR = 0.7;
 
-export class Mindmap extends React.Component<Props, State> {
+interface MapProps {
+  title: string;
+  items: Array<MapItem>;
+}
+
+export class Mindmap extends React.Component<MapProps, any> {
   /**
    * Renders a section of the mindmap containing an item and its children (highest being the mindmap itself)
    * @param item contains the information for text, layer, and children

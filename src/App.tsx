@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
 import { Header, Menu, Outliner, Mindmap } from './components';
-import { Document, FixMeLater, Props, State } from './types';
+import { Document, FixMeLater, State } from './types';
 
-export default class App extends React.Component<Props, State> {
-  constructor(props: Readonly<Props>) {
+export default class App extends React.Component<any, State> {
+  constructor(props: any) {
     super(props);
     const document = new Document();
     this.state = {
@@ -22,7 +22,13 @@ export default class App extends React.Component<Props, State> {
   }
 
   createNewDocument() {
-    this.setState({ ...this.state, documents: this.state.documents.concat(new Document()) });
+    const document = new Document(this.state.documents);
+    this.setState({ ...this.state, documents: this.state.documents.concat(document) });
+  }
+
+  switchDocument(id: string) {
+    const idDocumentMap = new Map(this.state.documents.map((doc) => [doc.id, doc]));
+    this.setState({ ...this.state, currentDocument: idDocumentMap.get(id)! })
   }
 
   render() {
@@ -31,6 +37,7 @@ export default class App extends React.Component<Props, State> {
         <Header />
         <Menu
           onCreateNewClick={() => this.createNewDocument()}
+          onDocumentClick={(e) => this.switchDocument((e.target as FixMeLater).value!)}
           documents={this.state.documents}
           currentDocument={this.state.currentDocument}
         />

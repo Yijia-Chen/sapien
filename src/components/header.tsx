@@ -1,9 +1,10 @@
-import { Props } from "../types";
+import { ButtonProps, UNIMPLEMENTED_CALLBACK } from '../types';
+import { SetRequired } from 'type-fest';
 
-export function Header(_props: Props) {
+export function Header(_props: any): JSX.Element {
   return (
     <header className='App-header'>
-      <MenuButton icon='fas fa-bars' />
+      <MenuButton icon='fas fa-bars' onClick={UNIMPLEMENTED_CALLBACK} />
       <p id='text-logo'>Sapien</p>
       <ModePanel />
       <UtilityPanel />
@@ -12,44 +13,44 @@ export function Header(_props: Props) {
   );
 }
 
-function ModePanel(_props: Props): React.ReactElement {
+function ModePanel(_props: any): JSX.Element {
   return (
     <div className='mode-panel'>
-      <ModeButton value='Mind Map' />
-      <ModeButton value='Outliner' />
-      <ModeButton value='Both' />
+      <ModeButton value='Mind Map' onClick={UNIMPLEMENTED_CALLBACK} />
+      <ModeButton value='Outliner' onClick={UNIMPLEMENTED_CALLBACK} />
+      <ModeButton value='Both' onClick={UNIMPLEMENTED_CALLBACK} />
     </div>
   );
 }
 
-function UtilityPanel(_props: Props): React.ReactElement {
+function UtilityPanel(_props: any): JSX.Element {
   return (
     <div className='utility-panel'>
-      <UtilityButton icon='fas fa-arrow-down' value='Topic' />
-      <UtilityButton icon='fas fa-arrow-right' value='Subtopic' />
-      <UtilityButton icon='fas fa-project-diagram' value='Relationship' />
-      <UtilityButton icon='far fa-square' value='Boundary' />
-      <UtilityButton icon='fas fa-plus' value='Insert' />
+      <UtilityButton icon='fas fa-arrow-down' value='Topic' onClick={UNIMPLEMENTED_CALLBACK} />
+      <UtilityButton icon='fas fa-arrow-right' value='Subtopic' onClick={UNIMPLEMENTED_CALLBACK} />
+      <UtilityButton icon='fas fa-project-diagram' value='Relationship' onClick={UNIMPLEMENTED_CALLBACK} />
+      <UtilityButton icon='far fa-square' value='Boundary' onClick={UNIMPLEMENTED_CALLBACK} />
+      <UtilityButton icon='fas fa-plus' value='Insert' onClick={UNIMPLEMENTED_CALLBACK} />
     </div> 
   );
 }
 
-function StylePanel(_props: Props) {
+function StylePanel(_props: any): JSX.Element {
   return (
     <div className='style-panel'>
-      <UtilityButton icon='fas fa-palette' value='Style' />
+      <UtilityButton icon='fas fa-palette' value='Style' onClick={UNIMPLEMENTED_CALLBACK} />
     </div>
   );
 }
 
-function MenuButton(props: Props): React.ReactElement {
+function MenuButton(props: SetRequired<ButtonProps, 'icon'>): JSX.Element {
   return (
     <button className='menu-button' onClick={props.onClick}>
       <i className={props.icon} style={{ fontSize:'20px', marginTop:'2.5px', color:'#ffffff' }}></i>
     </button>);
 }
 
-function ModeButton(props: Props): React.ReactElement {
+function ModeButton(props: SetRequired<ButtonProps, 'value'>): JSX.Element {
   return (
     <button className='mode-button' onClick={props.onClick}>
       {props.value}
@@ -57,9 +58,9 @@ function ModeButton(props: Props): React.ReactElement {
   )
 }
 
-function UtilityButton(props: Props) {
+function UtilityButton(props: SetRequired<ButtonProps, 'icon' | 'value'>): JSX.Element {
   return (
-    <button className='utility-button'>
+    <button className='utility-button' onClick={props.onClick}>
       <i className={props.icon} style={{ fontSize:'16px', marginTop:'10px', color:'#ffffff' }}></i>
       <p className='utility-button-text'>{props.value}</p>
     </button>
