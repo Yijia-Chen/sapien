@@ -3,7 +3,7 @@ import { MapItem, MapProps, Mode } from "../types";
 import Xarrow from "react-xarrows";
 import { uuid } from "../utils";
 
-const ITEM_SCALE_FACTOR = 0.95;
+const ITEM_SCALE_FACTOR = 0.8;
 const MINDMAP_SCALE_FACTOR = 0.7;
 
 export class Mindmap extends React.Component<MapProps, any> {
@@ -20,7 +20,7 @@ export class Mindmap extends React.Component<MapProps, any> {
     const curveColor = assignBranchColor(branchIndex);
 
     return (
-      <div key={id} className='mindmap-section' style={{ transform: `scale(${scaleFactor(item.layer)})` }}>
+      <div key={id} className='mindmap-section' style={{ transform: `scale(${ITEM_SCALE_FACTOR})` }}>
         <div className='mindmap-curve-connector'>
           <Xarrow
             start={parentId}
@@ -65,10 +65,6 @@ export class Mindmap extends React.Component<MapProps, any> {
       return null;
     }
   }
-}
-
-function scaleFactor(layer: number) {
-  return Math.pow(ITEM_SCALE_FACTOR, layer+1);
 }
 
 function assignBranchColor(branchIndex: number) {

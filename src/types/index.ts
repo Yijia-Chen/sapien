@@ -35,7 +35,6 @@ export interface OutlinerProps {
   onTitleChange: ChangeEventHandler;
   onBodyChange: ChangeEventHandler;
   mapState: MapState;
- 
 }
 
 export interface MapProps {
